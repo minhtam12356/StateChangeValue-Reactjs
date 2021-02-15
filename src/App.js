@@ -1,37 +1,60 @@
 import React from 'react';
-import RowTitle from './Components/Row-title';
 import RowData from './Components/Row-data';
 
 class App extends React.Component{
   constructor(){
     super();
     this.number = [1, 2, 3];
-    this.width = 200;
-    this.src = "http://bit.ly/3ayPusa";
   }
   render(){
+    const click = () => {
+      this.number = [1, 2, 3];
+    }
+    const clickNo = () => {
+      this.number = [];
+    }
     return(
       <div>
-        <h2>Table gallery</h2>
-        <table>
-          <thead>
-            <tr>
+        <p>Use only HTML to set list type</p>
+        {
+          this.number.length > 0 && <div className="render">
+            <ol type="1">
               {
-                this.number.map((item, index) => <RowTitle number={item} key={index}/>)
+                this.number.map((item, index) => <RowData type="1" key={index} number={item}/>)
               }
-            </tr>
-          </thead>
-          <tbody>
-            {
-              this.number.map((item, index) => 
-              <tr key={index}>
-                {
-                  this.number.map((item, index) => <RowData src={this.src} width={this.width} key={index}/>)
-                } 
-              </tr>)
-            }
-          </tbody>
-        </table>
+            </ol>
+            <ol type="A">
+              {
+                this.number.map((item, index) => <RowData type="1" key={index} number={item}/>)
+              }
+            </ol>
+            <ol type="a">
+              {
+                this.number.map((item, index) => <RowData type="1" key={index} number={item}/>)
+              }
+            </ol>
+            <ol type="I">
+              {
+                this.number.map((item, index) => <RowData type="1" key={index} number={item}/>)
+              }
+            </ol>
+            <ol type="i">
+              {
+                this.number.map((item, index) => <RowData type="1" key={index} number={item}/>)
+              }
+            </ol>
+            <ol start="24">
+              {
+                this.number.map((item, index) => <RowData type="1" key={index} number={item}/>)
+              }
+            </ol>
+          </div>  
+        }
+        {
+          this.number.length === 0 && <div className="render">Nothing Information!!</div>  
+        }    
+      <button onClick={click}>Render</button>
+      <button onClick={clickNo}>No Render</button>
       </div>
     )}
 }
