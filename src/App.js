@@ -7,12 +7,6 @@ class App extends React.Component{
     this.number = [1, 2, 3];
   }
   render(){
-    const click = () => {
-      this.number = [1, 2, 3];
-    }
-    const clickNo = () => {
-      this.number = [];
-    }
     return(
       <div>
         <p>Use only HTML to set list type</p>
@@ -52,9 +46,7 @@ class App extends React.Component{
         }
         {
           this.number.length === 0 && <div className="render">Nothing Information!!</div>  
-        }    
-      <button onClick={click}>Render</button>
-      <button onClick={clickNo}>No Render</button>
+        }
       </div>
     )}
 }
