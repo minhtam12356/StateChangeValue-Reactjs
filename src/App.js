@@ -1,38 +1,35 @@
 import React from 'react';
-import Light from './Components/Light';
 import './App.css';
-
-const Red = 0;
-const Yellow = 1;
-const Green = 2;
-
 class App extends React.Component{
   constructor(){
-    super();
+    super()
     this.state = {
-      currentColor : Red
-    };
-    setInterval(() => {
-      this.setState({
-        currentColor : this.getNextColor(this.state.currentColor)
-      })
-    }, 1000);
-  }
-  
-  getNextColor(color){
-    switch (color) {
-      case Red:
-        return Green;
-      case Green:
-        return Yellow;
-      default:
-        return Red;
+      valueInput : "",
+      valueP : ""
     }
+    this.change = this.changeEvent.bind(this);
+  }
+
+  async changeEvent(event){
+    await new Promise((resolve, reject) => {
+      this.setState({
+        valueInput: event.target.value
+      });
+      resolve();
+    });
+    this.setState({
+      valueP: this.state.valueInput
+    });
+    
   }
 
   render(){
     return(
-      <Light currentColor={this.state.currentColor}/>
+      <div>
+        <h2>Binding value</h2>
+        <p id="binding-block" >Hello, {this.state.valueP}</p>
+        <input id="typing-area" type="text" placeholder="Nhap ten cua ban" onChange={this.change}/>
+      </div>     
     )}
 }
 
