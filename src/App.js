@@ -10,17 +10,12 @@ class App extends React.Component{
     this.change = this.changeEvent.bind(this);
   }
 
-  async changeEvent(event){
-    await new Promise((resolve, reject) => {
-      this.setState({
-        valueInput: event.target.value
-      });
-      resolve();
-    });
+  changeEvent(event){
     this.setState({
+       valueInput: event.target.value
+    }, {
       valueP: this.state.valueInput
     });
-    
   }
 
   render(){
